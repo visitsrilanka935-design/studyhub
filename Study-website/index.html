@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyHub – Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="signup-box">
+      <h1>🚀 Join StudyHub</h1>
+      <p>Sign up to start your smart learning journey.</p>
+
+      <form id="signupForm">
+  <h2>Create Your Account</h2>
+
+  <input type="text" id="username" placeholder="Full Name" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="password" id="password" placeholder="Password" required />
+
+  <!-- NEW FIELDS -->
+  <input type="number" id="target" placeholder="Target Score" required />
+  <input type="date" id="startDate" placeholder="Start Date" required />
+  <input type="date" id="examDate" placeholder="Exam Date" required />
+
+  <button type="submit">Sign Up</button>
+</form>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const userData = {
+    username: document.getElementById('username').value,
+    email: document.getElementById('email').value,
+    password: document.getElementById('password').value,
+    target: document.getElementById('target').value,
+    startDate: document.getElementById('startDate').value,
+    examDate: document.getElementById('examDate').value,
+  };
+
+  // Save data to localStorage
+  localStorage.setItem('user', JSON.stringify(userData));
+
+  // Redirect to dashboard
+  window.location.href = 'dashboard.html';
+});
+</script>
+
+       
+
+  
+</body>
+</html>
+

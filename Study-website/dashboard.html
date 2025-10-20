@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyHub Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+  <nav class="navbar">
+    <h2>📘 StudyHub</h2>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="study.html">Study Importance</a>
+      <a href="profile.html">Profile</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <main class="dashboard">
+    <section class="timer">
+  <h2>⏰ Study Timer</h2>
+  <div class="timer-display" id="timer">00:00:00</div>
+  <div class="timer-buttons">
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pause</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+</section>
+
+<!-- Link to the new timer JS -->
+<script src="study-timer.js"></script>
+
+
+      <h1>👋 Welcome back, <span id="username">Student</span>!</h1>
+      <p>Here’s your learning progress for today.</p>
+   </section>
+  
+
+
+   <div class="profile">
+  <h3>📊 Your Stats</h3>
+  <ul>
+    <li>Target Score: <span id="targetScore">--</span></li>
+    <li>Start Date: <span id="startDate">--</span></li>
+    <li>Exam Date: <span id="examDate">--</span></li>
+  </ul>
+</div>
+<script>
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  if (user) {
+    document.getElementById('username').textContent = user.username;
+    document.getElementById('targetScore').textContent = user.target;
+    document.getElementById('startDate').textContent = user.startDate;
+    document.getElementById('examDate').textContent = user.examDate;
+  } else {
+    // If no user, redirect to sign in
+    window.location.href = 'index.html';
+  }
+
+  function logout() {
+    localStorage.removeItem('user');
+    window.location.href = 'index.html';
+  }
+</script>
+<script>
+// Example data — replace these with real dashboard variables
+const user = localStorage.getItem('username') || "Student";
+const targetScore = 'targetScore';
+const startDate = 'startDate';
+const examDate = 'examDate';
+const totalStudyTime = localStorage.getItem('studyTime') || "00:00:00";
+
+// Save to localStorage (so Profile page can read it)
+localStorage.setItem('targetScore', targetScore);
+localStorage.setItem('startDate', startDate);
+localStorage.setItem('examDate', examDate);
+localStorage.setItem('studyTime', totalStudyTime);
+</script>
+
+
+
+    <section class="progress">
+      <h2>📊 Your Study Progress</h2>
+      <canvas id="progressChart"></canvas>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
+
+
+

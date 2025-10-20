@@ -1,0 +1,23 @@
+ {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d1b2a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #1b263b;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+input, button {
+  width: 100%;
+  padding: 10px;

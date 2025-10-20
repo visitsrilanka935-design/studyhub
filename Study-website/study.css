@@ -1,0 +1,143 @@
+/* ====== StudyHub – About Study Page ====== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb, #06b6d4);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.header h1 {
+  font-size: 26px;
+  color: #fff;
+}
+
+.header nav a {
+  color: #e0e7ff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.header nav a:hover,
+.header nav a.active {
+  color: #06b6d4;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #dbeafe;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Importance section */
+.importance {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.importance h2 {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.importance-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 25px;
+  width: 280px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.card h3 {
+  color: #06b6d4;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #e0e7ff;
+  font-size: 15px;
+}
+
+/* Motivation */
+.motivation {
+  padding: 80px 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 40px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.motivation h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #f9fafb;
+}
+
+.motivation p {
+  font-size: 18px;
+  color: #dbeafe;
+  margin-bottom: 20px;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 20px;
+  color: #06b6d4;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.1);
+  color: #e0e7ff;
+  margin-top: 40px;
+}
