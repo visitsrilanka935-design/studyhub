@@ -13,17 +13,6 @@
 
 </head>
 <body>
-  
-
-  <nav class="navbar">
-    <h2>📘 StudyHub</h2>
-    <div class="nav-links">
-      <a href="dashboard.html" class="active">Dashboard</a>
-      <a href="study.html">Study Importance</a>
-      <a href="profile.html">Profile</a>
-      <button onclick="logout()">Logout</button>
-    </div>
-  </nav>
 <!-- 🎶 Study Music Player -->
 <div class="music-player">
   <h2>🎧 Study Music Zone</h2>
@@ -32,13 +21,13 @@
   <select id="musicSelect">
     <option value="music/focus1.mp3">🎼 Focus Track 1</option>
     <option value="music/focus2.mp3">🌙 Chill Track 2</option>
-    
+    <option value="music/focus3.mp3">🔥 Energy Track 3</option>
   </select>
 
   <div class="controls">
-    <button id="play1Btn">▶️ Play</button>
-    <button id="pause2Btn">⏸ Pause</button>
-    <button id="stop3Btn">⏹ Stop</button>
+    <button id="playBtn">▶️ Play</button>
+    <button id="pauseBtn">⏸ Pause</button>
+    <button id="stopBtn">⏹ Stop</button>
   </div>
 
   <audio id="studyAudio" loop></audio>
@@ -88,9 +77,9 @@
 
 <script>
   const audio = document.getElementById('studyAudio');
-  const play1Btn = document.getElementById('playBtn1');
-  const pause1Btn = document.getElementById('pauseBtn1');
-  const stop1Btn = document.getElementById('stopBtn1');
+  const play1Btn = document.getElementById('play1Btn');
+  const pause1Btn = document.getElementById('pause1Btn');
+  const stop1Btn = document.getElementById('stop1Btn');
   const musicSelect = document.getElementById('musicSelect');
 
   // Load default track
@@ -119,6 +108,25 @@
     audio.currentTime = 0;
   });
 </script>
+
+
+
+
+
+
+
+
+
+  <nav class="navbar">
+    <h2>📘 StudyHub</h2>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="study.html">Study Importance</a>
+      <a href="profile.html">Profile</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
   <main class="dashboard">
     <section class="timer">
   <h2>⏰ Study Timer</h2>
@@ -192,11 +200,3 @@ localStorage.setItem('studyTime', totalStudyTime);
   <script src="dashboard.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
