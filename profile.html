@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyHub – Profile</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      margin: 0;
+      padding: 80px 0;
+    }
+
+    .profile-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2d2f77;
+    }
+
+    .profile-info {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .profile-info img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 3px solid #2d2f77;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .profile-info img:hover {
+      transform: scale(1.05);
+    }
+
+    .upload-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .upload-btn:hover {
+      opacity: 0.9;
+    }
+
+    .stats, .goals, .settings {
+      margin-top: 30px;
+    }
+
+    .stats h3, .goals h3, .settings h3 {
+      color: #2d2f77;
+      border-bottom: 2px solid #a1c4fd;
+      padding-bottom: 6px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    header.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      background-color: #4f46e5;
+      color: white;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links a.active {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">📘 StudyHub</div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="study.html">Study Importance</a>
+      <a href="profile.html" class="active">Profile</a>
+      <a href="index.html" class="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <div class="profile-container">
+    <h1>Your Profile</h1>
+
+    <div class="profile-info">
+      <img id="profilePic" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile Picture" />
+      <br />
+      <input type="file" id="imageUpload" accept="image/*" style="display:none" />
+      <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">Change Picture</button>
+
+      <h2 id="username">Student Name</h2>
+      <p id="email">student@email.com</p>
+    </div>
+
+    <div class="stats">
+      <h3>📊 Study Stats</h3>
+      <p><b>Total Study Time:</b> <span id="studyTime">--:--:--</span></p>
+      <p><b>Target Score:</b> <span id="targetScore">--</span></p>
+    </div>
+
+    <div class="goals">
+      <h3>🎯 Study Goals</h3>
+      <p><b>Start Date:</b> <span id="startDate">--</span></p>
+      <p><b>Exam Date:</b> <span id="examDate">--</span></p>
+      <button class="btn" onclick="editGoals()">Edit Goals</button>
+    </div>
+
+    <div class="settings">
+      <h3>⚙️ Settings</h3>
+      <button class="btn" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </div>
+
+  <script>
+    // Load basic profile data
+    document.getElementById('username').textContent = localStorage.getItem('username') || "Student";
+    document.getElementById('email').textContent = localStorage.getItem('email') || "student@email.com";
+    document.getElementById('studyTime').textContent = localStorage.getItem('studyTime') || "00:00:00";
+    document.getElementById('targetScore').textContent = localStorage.getItem('targetScore') || "N/A";
+    document.getElementById('startDate').textContent = localStorage.getItem('startDate') || "N/A";
+    document.getElementById('examDate').textContent = localStorage.getItem('examDate') || "N/A";
+
+    // Load saved profile picture
+    const savedPic = localStorage.getItem('profilePic');
+    if (savedPic) {
+      document.getElementById('profilePic').src = savedPic;
+    }
+
+    // Change & Save new profile picture
+    const imageUpload = document.getElementById('imageUpload');
+    imageUpload.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imgData = e.target.result;
+          document.getElementById('profilePic').src = imgData;
+          localStorage.setItem('profilePic', imgData);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Optional: Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function editGoals() {
+      alert("Edit goals feature coming soon!");
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyHub – Study Resources</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+      margin: 0;
+      padding: 80px 0;
+      transition: background 0.5s ease;
+    }
+
+    header.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      background-color: #4f46e5;
+      color: white;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links a.active {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #2d2f77;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .lang-toggle {
+      background: white;
+      color: #4f46e5;
+      border: 2px solid #4f46e5;
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .resource-links {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .resource-links h2 {
+      color: #2d2f77;
+    }
+
+    .resource-links a {
+      display: block;
+      background: #f3f4ff;
+      color: #2d2f77;
+      text-decoration: none;
+      padding: 10px 14px;
+      margin: 8px 0;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .resource-links a:hover {
+      background: #4f46e5;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">📘 StudyHub</div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="study.html" class="active">Study Resources</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+    <button id="langBtn" class="lang-toggle">සිංහල</button>
+  </header>
+
+  <div class="content">
+    <h1 id="title">The Importance of Studying</h1>
+    <p id="desc">
+      Studying is the foundation for success. It builds knowledge, confidence, and the skills needed to shape your future.
+    </p>
+
+    <div class="resource-links">
+      <h2 id="resourcesTitle">📚 Sri Lankan Study Websites</h2>
+      
+      <a href="https://share.google/3ZG9vc2ZAR4atzmuF" target="_blank">WiKiPapers (Past Papers)</a>
+      <a href="https://www.nie.lk" target="_blank">NIE (National Institute of Education)</a>
+    </div>
+  </div>
+
+  <script>
+    const langBtn = document.getElementById("langBtn");
+    const title = document.getElementById("title");
+    const desc = document.getElementById("desc");
+    const resourcesTitle = document.getElementById("resourcesTitle");
+
+    // Sinhala translations
+    const sinhala = {
+      title: "අධ්‍යයනයේ වැදගත්කම",
+      desc: "අධ්‍යයනය ඔබේ ජීවිතය සාර්ථක කර ගැනීමට මූලික මඟයි. එය දැනුම, විශ්වාසය සහ ඔබේ අනාගතය ගොඩනැගීමට අවශ්‍ය කුසලතා වර්ධනය කරයි.",
+      resourcesTitle: "📚 ශ්‍රී ලංකා අධ්‍යයන වෙබ් අඩවි",
+      button: "English",
+    };
+
+    // English translations
+    const english = {
+      title: "The Importance of Studying",
+      desc: "Studying is the foundation for success. It builds knowledge, confidence, and the skills needed to shape your future.",
+      resourcesTitle: "📚 Sri Lankan Study Websites",
+      button: "සිංහල",
+    };
+
+    // Load saved language
+    let currentLang = localStorage.getItem("language") || "en";
+    if (currentLang === "si") setSinhala();
+
+    // Switch language
+    langBtn.addEventListener("click", () => {
+      if (currentLang === "en") {
+        setSinhala();
+        currentLang = "si";
+        localStorage.setItem("language", "si");
+      } else {
+        setEnglish();
+        currentLang = "en";
+        localStorage.setItem("language", "en");
+      }
+    });
+
+    function setSinhala() {
+      title.textContent = sinhala.title;
+      desc.textContent = sinhala.desc;
+      resourcesTitle.textContent = sinhala.resourcesTitle;
+      langBtn.textContent = sinhala.button;
+    }
+
+    function setEnglish() {
+      title.textContent = english.title;
+      desc.textContent = english.desc;
+      resourcesTitle.textContent = english.resourcesTitle;
+      langBtn.textContent = english.button;
+    }
+  </script>
+</body>
+</html>
