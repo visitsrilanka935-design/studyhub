@@ -173,6 +173,64 @@
       <p><b>Exam Date:</b> <span id="examDate">--</span></p>
       <button class="btn" onclick="editGoals()">Edit Goals</button>
     </div>
+	  <div class="goals">
+      <h3>🎯 Study Goals</h3>
+      <p><b>Start Date:</b> <span id="startDate">--</span></p>
+      <p><b>Exam Date:</b> <span id="examDate">--</span></p>
+      <button class="btn" onclick="editGoals()">Edit Goals</button>
+    </div>
+	<div class="achievement">
+  <h3>🏅 Achievements</h3>
+  <div id="medalContainer">
+    <p>No medals yet — keep studying!</p>
+  </div>
+  <input type="file" id="marksUpload" accept="image/*" />
+  <button onclick="uploadMarks()">Submit Marks</button>
+</div>
+	  <script>
+// Example student data
+let student = {
+  username: localStorage.getItem("username") || "Student",
+  targetScore: 1200,
+  achievedScore: null,
+  medal: null
+};
+
+function uploadMarks() {
+  const fileInput = document.getElementById("marksUpload");
+  if (!fileInput.files.length) {
+    alert("Please upload your marks screenshot first!");
+    return;
+  }
+
+  // In a real website, this would be verified by a teacher or admin.
+  // Here we simulate passing.
+  const userPassed = confirm("Did you pass your target score?");
+
+  if (userPassed) {
+    student.medal = "gold";
+    localStorage.setItem("medal", "gold");
+    showMedal("gold");
+    alert("🎉 Congratulations! You earned a Gold Medal!");
+  } else {
+    alert("Keep trying! You’re getting closer!");
+  }
+}
+
+function showMedal(type) {
+  const medalContainer = document.getElementById("medalContainer");
+  medalContainer.innerHTML = `
+    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583347.png" alt="${type} medal" />
+    <p>🏅 ${student.username}, you achieved your target!</p>
+  `;
+}
+
+// Auto-load medal if student already earned one
+window.onload = () => {
+  const savedMedal = localStorage.getItem("medal");
+  if (savedMedal) showMedal(savedMedal);
+};
+</script>
 
     <div class="settings">
       <h3>⚙️ Settings</h3>
@@ -221,5 +279,6 @@
   </script>
 </body>
 </html>
+
 
 
